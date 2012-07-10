@@ -1,0 +1,10 @@
+.metadata
+*/log
+*~
+*.swp
+*.o
+*.directory
+*/bin/*
+Makefile
+*/gen/*
+

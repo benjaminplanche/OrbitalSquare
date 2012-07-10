@@ -1,0 +1,68 @@
+
+sprites.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+smWalkLeft
+  rotate: false
+  xy: 2, 2
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 2
+smWalkRight
+  rotate: false
+  xy: 2, 51
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 4
+smWalkRight
+  rotate: false
+  xy: 37, 2
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 1
+smWalkLeft
+  rotate: false
+  xy: 37, 51
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 3
+smWalkRight
+  rotate: false
+  xy: 72, 2
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 3
+smWalkLeft
+  rotate: false
+  xy: 72, 51
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 1
+smWalkLeft
+  rotate: false
+  xy: 107, 2
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 4
+smWalkRight
+  rotate: false
+  xy: 107, 51
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: 2
+tile
+  rotate: false
+  xy: 2, 100
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1

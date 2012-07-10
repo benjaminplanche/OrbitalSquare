@@ -1,0 +1,91 @@
+package com.jvatinsa.orbital.maps;
+
+import com.badlogic.gdx.utils.JsonReader;
+import com.jvatinsa.orbital.game.OSGame;
+
+public class OrbitalMapFactory {
+
+	private JsonReader jsonReader;
+
+	private static OrbitalMapFactory orbitalMapFactory = null;
+		
+		public static OrbitalMapFactory getI() {
+			if(orbitalMapFactory == null) {
+				orbitalMapFactory = new OrbitalMapFactory();
+			}
+			return orbitalMapFactory;
+		}
+	
+	private OrbitalMapFactory() {
+		jsonReader = new JsonReader();
+		
+	}
+	
+	public OrbitalMap loadMap(final String fileName) {
+		return null;
+		/*
+		int width = 0, height = 0;
+		TileType[][] map = null;
+		
+		Json json = new Json();
+		// dirty method with casts ...
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) jsonReader.parse(Gdx.files.internal(fileName));
+		System.out.println(root.toString());
+		width = Integer.parseInt((String) root.get("width"));
+		height = Integer.parseInt((String) root.get("height"));
+		
+		map = new TileType[width][height];
+		Array<Array<Float>> mapJSON = (Array<Array<Float>>) root.get("tiles");
+		for (int i = 0; i < mapJSON.size; i++) {
+			Array<Float> p = mapJSON.get(i);
+			switch ((p.get(2)) {
+				case 1: 
+					map[p.get(0)][p.get(1)] = TileType.SOLID;
+				break;
+				default:
+				
+				break;
+			}
+			
+			
+		}
+		
+		return new OrbitalMap(width, height, map);
+		*/
+	}
+	
+	public OrbitalMap randomMap() {
+		int width = 30, height = 30;
+		Cell[][] map = null;
+		map = new Cell[width][height];
+		
+		// Define offsets depending on the size of the map
+		float offsetX = OSGame.WIDTH/2-(width/2)*Cell.SIZE;
+		float offsetY = OSGame.HEIGHT/2-(height/2)*Cell.SIZE;
+		
+		// manual build
+		for (int j = 0; j < width; j++) {
+			map[0][j] = new Brick(0+offsetX, j*Cell.SIZE+offsetY);
+			map[height-1][j] = new Brick((height-1)*Cell.SIZE+offsetX, j*Cell.SIZE+offsetY);
+		}
+		
+		for (int i = 0; i < height; i++) {
+			map[i][0] = new Brick(i*Cell.SIZE+offsetX, 0+offsetY);
+			map[i][width-1] = new Brick(i*Cell.SIZE+offsetX, (width-1)*Cell.SIZE+offsetY);
+		}
+		
+		for (int i = 10; i < 15; i++) {
+			map[i][13] = new Brick(i*Cell.SIZE+offsetX, 13*Cell.SIZE+offsetY);
+		}
+		for (int i = 2; i < 17; i++) {
+			map[i][4] = new Brick(i*Cell.SIZE+offsetX, 4*Cell.SIZE+offsetY);
+		}
+		
+		for (int j = 8; j < 15; j++) {
+			map[24][j] = new Brick(24*Cell.SIZE+offsetX, j*Cell.SIZE+offsetY);
+		}
+		
+		return new OrbitalMap(width, height, map);
+	}
+	
+}
