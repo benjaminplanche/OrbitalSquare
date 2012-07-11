@@ -2,6 +2,8 @@ package com.jvatinsa.orbital.maps;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.jvatinsa.orbital.characters.GameObject;
 import com.jvatinsa.orbital.utils.SpritesManager;
 
@@ -9,9 +11,10 @@ public class Cell extends GameObject {
 
 	public static final int SIZE = 20;
 	
-	protected float angle;
-	
 	protected Sprite sprite;
+	
+	// Box2D stuff
+	public Body body;
 	
 	public Cell(float x, float y) {
 		super();
@@ -31,12 +34,17 @@ public class Cell extends GameObject {
 	
 	public void rotate(float angle, final float offsetX, final float offsetY) {
 		this.angle += angle;
-		float xd = x - offsetX;
-		float yd = y - offsetY;
+		float xd = body.getPosition().x - offsetX;
+		float yd = body.getPosition().y - offsetY;
 		
 		angle = (float) Math.toRadians(angle);
 		x = (float) (xd*Math.cos(angle) - yd*Math.sin(angle)) + offsetX;
 		y = (float) (xd*Math.sin(angle) + yd*Math.cos(angle)) + offsetY;
+		
+		body.setTransform(
+				(float) (xd*Math.cos(angle) - yd*Math.sin(angle)) + offsetX, 
+				(float) (xd*Math.sin(angle) + yd*Math.cos(angle)) + offsetY, 
+				this.angle*MathUtils.degreesToRadians);
 		
 	}
 	

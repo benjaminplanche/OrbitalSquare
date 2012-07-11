@@ -7,14 +7,15 @@ import com.jvatinsa.orbital.game.OSGame;
 
 public class OrbitalMap implements Displayable{
 
-	private int width;
-	private int height;
-	private Cell[][] map;
-
+	public int width;
+	public int height;
+	public Cell[][] map;
+	
 	public OrbitalMap(final int width, final int height, final Cell[][] map) {
 		this.width = width;
 		this.height = height;
 		this.map = map;
+		
 		
 	}
 
@@ -49,6 +50,5 @@ public class OrbitalMap implements Displayable{
 		Spaceman.getI().update(deltaTime);
 		
 	}
-
 	
 }

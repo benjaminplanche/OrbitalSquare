@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class OSCharacter extends GameObject {
 
 	// Defaults
-	public static final int SPEED = 2;
+	public static final int SPEED = 2000;
 	public static final float DEFAULT_ANIM_SPEED = 0.2f; 
 	
 	// Properties
@@ -17,7 +17,6 @@ public class OSCharacter extends GameObject {
 	protected boolean turnLeft;
 	protected Animation walkLeft;
 	protected Animation walkRight;
-	
 	
 	public OSCharacter() {
 		super();
