@@ -46,7 +46,7 @@ public class OrbitalMap implements Displayable{
 
 	@Override
 	public void update(float deltaTime) {
-		rotate(1);
+		rotate(0.1f); // test
 		Spaceman.getI().update(deltaTime);
 		
 	}

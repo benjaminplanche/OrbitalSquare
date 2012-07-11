@@ -11,8 +11,11 @@ import com.jvatinsa.orbital.utils.SpritesManager;
 public class OSGame extends Game {
 	
 	// Constants
-	public static final int WIDTH = 860;
+	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 860;
+	
+	// Box2D ratio meters->px
+	public static final int PX_PER_METER = 1;
 	
 	// Screens
 	public static HomeScreen homeScreen;

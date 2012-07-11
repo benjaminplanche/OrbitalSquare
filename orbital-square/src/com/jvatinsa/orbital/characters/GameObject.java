@@ -8,8 +8,8 @@ import com.jvatinsa.orbital.commons.Displayable;
 public class GameObject implements Displayable{
 
 	// Position
-	public float x;
-	public float y;
+	protected float x;
+	protected float y;
 	protected float angle;
 	
 	// Animation
@@ -19,29 +19,36 @@ public class GameObject implements Displayable{
 	public Body body;
 	
 	public GameObject() {
-		this.x = 0;
-		this.y = 0;
-		this.angle = 0;
-		this.stateTime = 0;
+		x = 0;
+		y = 0;
+		angle = 0;
+		stateTime = 0;
 	}
-	
+
 	@Override
 	public void draw(SpriteBatch batch) {
-		
-		
+		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void update(float deltaTime) {
-		this.stateTime+=deltaTime;
+		stateTime+=deltaTime;
 		
-		this.x = body.getPosition().x;
-		this.y = body.getPosition().y;
-		this.angle = body.getAngle()*MathUtils.radiansToDegrees;
+		x = body.getPosition().x;
+		y = body.getPosition().y;
+		angle = body.getAngle()*MathUtils.radiansToDegrees;
 		
 	}
 
 	
+	public float getX() {
+		return x;
+	}
+	
+	public float getY() {
+		return y;
+	}
+
 	
 }

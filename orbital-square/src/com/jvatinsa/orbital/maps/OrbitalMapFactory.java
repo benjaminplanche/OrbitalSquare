@@ -1,7 +1,12 @@
 package com.jvatinsa.orbital.maps;
 
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.utils.JsonReader;
 import com.jvatinsa.orbital.game.OSGame;
+import com.jvatinsa.orbital.game.OSWorld;
 
 public class OrbitalMapFactory {
 
@@ -84,6 +89,32 @@ public class OrbitalMapFactory {
 		for (int j = 8; j < 15; j++) {
 			map[24][j] = new Brick(24*Cell.SIZE+offsetX, j*Cell.SIZE+offsetY);
 		}
+		
+		
+		// 
+		for (int i = 0; i <width; i++) {
+			for (int j = 0; j <width; j++) {
+				if (map[i][j] != null) {
+					
+					PolygonShape cellPoly = new PolygonShape();
+					cellPoly.setAsBox(Cell.SIZE/2, Cell.SIZE/2);
+					
+					BodyDef cellBodyDef = new BodyDef();
+					cellBodyDef.type = BodyType.StaticBody;
+					cellBodyDef.position.x = map[i][j].getX()+Cell.SIZE/2;
+					cellBodyDef.position.y = map[i][j].getY()+Cell.SIZE/2;
+					
+					FixtureDef fixtureDef = new FixtureDef();
+					fixtureDef.shape = cellPoly;
+					fixtureDef.filter.groupIndex = 0;
+					map[i][j].body = OSWorld.getI().world.createBody(cellBodyDef);
+					map[i][j].body.createFixture(fixtureDef);
+					
+					cellPoly.dispose();
+				}
+			}
+		}
+		
 		
 		return new OrbitalMap(width, height, map);
 	}
