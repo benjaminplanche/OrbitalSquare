@@ -80,14 +80,18 @@ public class OrbitalMapFactory {
 		}
 		
 		for (int i = 10; i < 15; i++) {
-			map[i][13] = new Brick(i*Cell.SIZE+offsetX, 13*Cell.SIZE+offsetY);
+			map[i][17] = new Brick(i*Cell.SIZE+offsetX, 17*Cell.SIZE+offsetY);
 		}
-		for (int i = 2; i < 17; i++) {
-			map[i][4] = new Brick(i*Cell.SIZE+offsetX, 4*Cell.SIZE+offsetY);
+		for (int i = 6; i < 17; i++) {
+			map[i][11] = new Brick(i*Cell.SIZE+offsetX, 11*Cell.SIZE+offsetY);
 		}
 		
 		for (int j = 8; j < 15; j++) {
 			map[24][j] = new Brick(24*Cell.SIZE+offsetX, j*Cell.SIZE+offsetY);
+		}
+		
+		for (int j = 12; j < 17; j++) {
+			map[18][j] = new Brick(18*Cell.SIZE+offsetX, j*Cell.SIZE+offsetY);
 		}
 		
 		

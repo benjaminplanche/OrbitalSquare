@@ -57,13 +57,13 @@ public class Spaceman extends OSCharacter implements Displayable{
 		}
 		
 		
-		batch.draw(frame, 
-				x- frame.getRegionWidth()/2, 
-				y - frame.getRegionHeight()/2, // the bottom left corner of the box, unrotated
-				0, 0, // the rotation center relative to the bottom left corner of the box
-				frame.getRegionWidth(), frame.getRegionHeight(), // the width and height of the box
-				1, 1, // the scale on the x- and y-axis
-				(float)MathUtils.radiansToDegrees * body.getAngle()); // the rotation angle
+		Sprite sprite = new Sprite(frame);
+		
+		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
+		sprite.setX(x-sprite.getWidth()/2);
+		sprite.setY(y-sprite.getHeight()/2);
+		sprite.setRotation(angle);
+		sprite.draw(batch);
 		
 	}
 
