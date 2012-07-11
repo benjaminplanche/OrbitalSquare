@@ -3,10 +3,10 @@ package com.jvatinsa.orbital.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.jvatinsa.orbital.managers.FontsManager;
+import com.jvatinsa.orbital.managers.SpritesManager;
 import com.jvatinsa.orbital.ui.screens.GameScreen;
 import com.jvatinsa.orbital.ui.screens.HomeScreen;
-import com.jvatinsa.orbital.utils.FontsManager;
-import com.jvatinsa.orbital.utils.SpritesManager;
 
 public class OSGame extends Game {
 	

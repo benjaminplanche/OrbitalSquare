@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.jvatinsa.orbital.characters.GameObject;
-import com.jvatinsa.orbital.utils.SpritesManager;
+import com.jvatinsa.orbital.managers.SpritesManager;
 
 public class Cell extends GameObject {
 
@@ -57,12 +57,12 @@ public class Cell extends GameObject {
 		sprite.setRotation(angle);
 		sprite.draw(batch);
 		
-		
 	}
 
 	@Override
 	public void update(float deltaTime) {
-		super.update(deltaTime);
+		// TODO: fix bug
+		//super.update(deltaTime);
 		
 	}
 	

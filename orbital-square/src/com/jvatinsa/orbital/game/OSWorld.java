@@ -16,7 +16,7 @@ private static OSWorld osWorld = null;
 	}
 	
 	public World world;
-	public static final int GRAVITY = -100;
+	public static final int GRAVITY = -10;
 	
 	private OSWorld() {
 		world = new World(new Vector2(0, GRAVITY), true);

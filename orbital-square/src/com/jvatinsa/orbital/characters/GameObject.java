@@ -1,5 +1,6 @@
 package com.jvatinsa.orbital.characters;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -14,15 +15,17 @@ public class GameObject implements Displayable{
 	
 	// Animation
 	protected float stateTime;
+	protected Sprite sprite;
 	
 	// Box2D stuff
-	public Body body;
+	protected Body body;
 	
 	public GameObject() {
 		x = 0;
 		y = 0;
 		angle = 0;
 		stateTime = 0;
+		
 	}
 
 	@Override
@@ -34,6 +37,7 @@ public class GameObject implements Displayable{
 	@Override
 	public void update(float deltaTime) {
 		stateTime+=deltaTime;
+		
 		
 		x = body.getPosition().x;
 		y = body.getPosition().y;

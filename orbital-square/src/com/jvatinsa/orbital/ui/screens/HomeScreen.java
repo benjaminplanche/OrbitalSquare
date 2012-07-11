@@ -5,8 +5,8 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.jvatinsa.orbital.game.OSGame;
-import com.jvatinsa.orbital.utils.FontsManager;
-import com.jvatinsa.orbital.utils.StringsManager;
+import com.jvatinsa.orbital.managers.FontsManager;
+import com.jvatinsa.orbital.managers.StringsManager;
 
 public class HomeScreen extends OSScreen {
 

@@ -4,13 +4,12 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.jvatinsa.orbital.commons.Displayable;
 import com.jvatinsa.orbital.game.OSWorld;
-import com.jvatinsa.orbital.utils.SpritesManager;
+import com.jvatinsa.orbital.managers.SpritesManager;
 
 public class Spaceman extends OSCharacter implements Displayable{
 	
@@ -40,6 +39,10 @@ public class Spaceman extends OSCharacter implements Displayable{
 
 		boxPoly.dispose();
 
+		// test
+		body.setGravityScale(10);
+		
+		// Animations
 		walkLeft = new Animation(animWalkSpeed, SpritesManager.getI().animations.get("smWalkLeft"));
 		walkRight = new Animation(animWalkSpeed, SpritesManager.getI().animations.get("smWalkRight"));
 
@@ -49,21 +52,30 @@ public class Spaceman extends OSCharacter implements Displayable{
 	public void draw(SpriteBatch batch) {
 		
 		TextureRegion frame = null;
-		
 		if (turnLeft) {
 			frame = walkLeft.getKeyFrame(stateTime, true);
 		} else {
 			frame = walkRight.getKeyFrame(stateTime, true);
 		}
 		
-		
-		Sprite sprite = new Sprite(frame);
+		// TODO : use Pool !
+		sprite = new Sprite(frame); // GC calls !
 		
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setX(x-sprite.getWidth()/2);
 		sprite.setY(y-sprite.getHeight()/2);
 		sprite.setRotation(angle);
 		sprite.draw(batch);
+		
+		/*
+		batch.draw(frame, 
+				x - frame.getRegionWidth()/2, 
+				y - frame.getRegionHeight()/2, 
+				0, 0, 
+				frame.getRegionWidth(), 
+				frame.getRegionHeight(), 
+				1.f, 1.f, angle);
+		*/
 		
 	}
 
@@ -72,6 +84,7 @@ public class Spaceman extends OSCharacter implements Displayable{
 	}
 	
 	
+	// TODO : use "reals" values
 	public void moveLeft() {
 		turnLeft = true;
 		this.body.applyLinearImpulse(-speed*10000, 0, body.getPosition().x, body.getPosition().y);

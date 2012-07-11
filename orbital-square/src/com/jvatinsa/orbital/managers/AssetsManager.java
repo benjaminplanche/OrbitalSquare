@@ -1,4 +1,4 @@
-package com.jvatinsa.orbital.utils;
+package com.jvatinsa.orbital.managers;
 
 public class AssetsManager {
 

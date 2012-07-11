@@ -17,10 +17,7 @@ import com.jvatinsa.orbital.maps.OrbitalMapFactory;
 
 public class GameScreen extends OSScreen{
 
-	private final int DEFAULT_ANGLE = 15; // degrees
-	
 	private OrbitalMap currentMap;
-	
 	
 	// Box2D stuff
 	/** the immediate mode renderer to output our debug drawings **/
@@ -29,6 +26,7 @@ public class GameScreen extends OSScreen{
 	/** box2d debug renderer **/
 	private Box2DDebugRenderer debugRenderer;
 	
+	private boolean DEBUG = true;
 	
 	public GameScreen(OSGame game) {
 		this.game = game;
@@ -80,23 +78,25 @@ public class GameScreen extends OSScreen{
 		
 		
 		// DEBUG
-		debugRenderer.render(OSWorld.getI().world, camera.combined);
-
-		renderer.setProjectionMatrix(camera.combined);
-		renderer.begin(ShapeType.Point);
-		renderer.setColor(0, 1, 0, 1);
-		for (int i = 0; i < OSWorld.getI().world.getContactCount(); i++) {
-			Contact contact = OSWorld.getI().world.getContactList().get(i);
-			if (contact.isTouching()) {
-				WorldManifold manifold = contact.getWorldManifold();
-				int numContactPoints = manifold.getNumberOfContactPoints();
-				for (int j = 0; j < numContactPoints; j++) {
-					Vector2 point = manifold.getPoints()[j];
-					renderer.point(point.x, point.y, 0);
+		if (DEBUG) {
+			debugRenderer.render(OSWorld.getI().world, camera.combined);
+	
+			renderer.setProjectionMatrix(camera.combined);
+			renderer.begin(ShapeType.Point);
+			renderer.setColor(0, 1, 0, 1);
+			for (int i = 0; i < OSWorld.getI().world.getContactCount(); i++) {
+				Contact contact = OSWorld.getI().world.getContactList().get(i);
+				if (contact.isTouching()) {
+					WorldManifold manifold = contact.getWorldManifold();
+					int numContactPoints = manifold.getNumberOfContactPoints();
+					for (int j = 0; j < numContactPoints; j++) {
+						Vector2 point = manifold.getPoints()[j];
+						renderer.point(point.x, point.y, 0);
+					}
 				}
 			}
+			renderer.end();
 		}
-		renderer.end();
 		// END DEBUG
 		
 		batch.end();

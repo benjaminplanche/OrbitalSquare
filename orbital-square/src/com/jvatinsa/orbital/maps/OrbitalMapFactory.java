@@ -1,9 +1,9 @@
 package com.jvatinsa.orbital.maps;
 
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.utils.JsonReader;
 import com.jvatinsa.orbital.game.OSGame;
 import com.jvatinsa.orbital.game.OSWorld;
@@ -28,35 +28,9 @@ public class OrbitalMapFactory {
 	
 	public OrbitalMap loadMap(final String fileName) {
 		return null;
-		/*
-		int width = 0, height = 0;
-		TileType[][] map = null;
 		
-		Json json = new Json();
-		// dirty method with casts ...
-		OrderedMap<String, Object> root = (OrderedMap<String, Object>) jsonReader.parse(Gdx.files.internal(fileName));
-		System.out.println(root.toString());
-		width = Integer.parseInt((String) root.get("width"));
-		height = Integer.parseInt((String) root.get("height"));
+		// TODO : parsing json
 		
-		map = new TileType[width][height];
-		Array<Array<Float>> mapJSON = (Array<Array<Float>>) root.get("tiles");
-		for (int i = 0; i < mapJSON.size; i++) {
-			Array<Float> p = mapJSON.get(i);
-			switch ((p.get(2)) {
-				case 1: 
-					map[p.get(0)][p.get(1)] = TileType.SOLID;
-				break;
-				default:
-				
-				break;
-			}
-			
-			
-		}
-		
-		return new OrbitalMap(width, height, map);
-		*/
 	}
 	
 	public OrbitalMap randomMap() {
@@ -95,9 +69,9 @@ public class OrbitalMapFactory {
 		}
 		
 		
-		// 
-		for (int i = 0; i <width; i++) {
-			for (int j = 0; j <width; j++) {
+		// create bodies
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < width; j++) {
 				if (map[i][j] != null) {
 					
 					PolygonShape cellPoly = new PolygonShape();
