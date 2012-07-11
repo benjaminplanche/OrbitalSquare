@@ -52,8 +52,8 @@ public class Cell extends GameObject {
 	public void draw(SpriteBatch batch) {
 		super.draw(batch);
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setX(x);
-		sprite.setY(y);
+		sprite.setX(x-sprite.getWidth()/2);
+		sprite.setY(y-sprite.getHeight()/2);
 		sprite.setRotation(angle);
 		sprite.draw(batch);
 		

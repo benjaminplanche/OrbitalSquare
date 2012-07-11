@@ -58,8 +58,8 @@ public class Spaceman extends OSCharacter implements Displayable{
 		
 		
 		batch.draw(frame, 
-				x, 
-				y, // the bottom left corner of the box, unrotated
+				x- frame.getRegionWidth()/2, 
+				y - frame.getRegionHeight()/2, // the bottom left corner of the box, unrotated
 				0, 0, // the rotation center relative to the bottom left corner of the box
 				frame.getRegionWidth(), frame.getRegionHeight(), // the width and height of the box
 				1, 1, // the scale on the x- and y-axis
